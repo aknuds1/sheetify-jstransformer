@@ -1,10 +1,10 @@
 {
-  "name": "sheetify-jstransformer",
-  "version": "1.0.0",
+  "name": "@arve.knudsen/sheetify-jstransformer",
+  "version": "1.0.1",
   "description": "jstransformer plugin for sheetify.",
-  "homepage": "https://github.com/seangenabe/sheetify-jstransformer",
-  "author": "Sean Genabe <seangenabe@outlook.com>",
-  "repository": "seangenabe/sheetify-jstransformer",
+  "homepage": "https://github.com/aknuds1/sheetify-jstransformer",
+  "author": "Arve Knudsen <arve.knudsen@gmail.com>",
+  "repository": "aknuds1/sheetify-jstransformer",
   "license": "MIT",
   "main": "index.js",
   "keywords": [
