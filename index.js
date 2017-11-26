@@ -22,6 +22,7 @@ module.exports = function sheetify_jstransform(filename, source, options, cb) {
       }
 
       var opts = useSingle[1] || {}
+      opts.filename = filename
       var optsCb = useSingle[2] || identity
       opts = optsCb(opts, filename)
       transformer.renderAsync(current, opts, {}, function(err, result) {
