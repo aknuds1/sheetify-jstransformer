@@ -2,17 +2,17 @@ var jstransformer = require('jstransformer')
 var identity = function(a) { return a }
 
 module.exports = function sheetify_jstransform(filename, source, options, cb) {
-  var use = [].concat(options.use)
+  var transform = [].concat(options.transform)
   var current = source
 
   function runTransform() {
     try {
-      var useSingle = use.shift()
-      if (useSingle == null) {
+      var transformSingle = transform.shift()
+      if (transformSingle == null) {
         return cb(null, current)
       }
-      useSingle = [].concat(useSingle)
-      var transformer = jstransformer(useSingle[0])
+      transformSingle = [].concat(transformSingle)
+      var transformer = jstransformer(transformSingle[0])
       var matchesTransformer = transformer.inputFormats.some(function (format) {
         return RegExp('\.' + format + '$').test(filename)
       })
@@ -21,9 +21,9 @@ module.exports = function sheetify_jstransform(filename, source, options, cb) {
         return
       }
 
-      var opts = useSingle[1] || {}
+      var opts = transformSingle[1] || {}
       opts.filename = filename
-      var optsCb = useSingle[2] || identity
+      var optsCb = transformSingle[2] || identity
       opts = optsCb(opts, filename)
       transformer.renderAsync(current, opts, {}, function(err, result) {
         if (err) {
