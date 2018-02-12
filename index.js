@@ -12,6 +12,9 @@ module.exports = function sheetify_jstransform(filename, source, options, cb) {
         return cb(null, current)
       }
       transformSingle = [].concat(transformSingle)
+      if (typeof transformSingle[0] === 'string') {
+        transformSingle[0] = require(transformSingle[0])
+      }
       var transformer = jstransformer(transformSingle[0])
       var matchesTransformer = transformer.inputFormats.some(function (format) {
         return RegExp('\.' + format + '$').test(filename)
